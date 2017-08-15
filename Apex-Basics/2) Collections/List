@@ -1,0 +1,17 @@
+/** @@List:
+ * 1) Maintains indexes, which starts with zero (0)
+ * 2) Returns ordered / sorted values
+ * 3) Can contain duplicate values
+ * 4) You pass an index number and list returns the value at the index
+ * 
+ *  Run below snippet in developer console to see the output
+ **/
+
+List<String> strList = new List<String> ();
+strList.add ('Test - 3');
+strList.add ('Test - 2');
+strList.add ('Test - 1');
+strList.add ('Test - 1');
+
+System.debug ('List size @@@ ' + strList.size ());
+    // your code goes here...

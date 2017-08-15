@@ -1,0 +1,10 @@
+// 4.0 SOQL (Semi Join)
+SELECT Id, Name, AnnualRevenue
+FROM Account
+WHERE Id IN (SELECT AccountId FROM Opportunity)
+
+
+// 4.1 SOQL (Anti Join)
+SELECT Id, Name, AnnualRevenue
+FROM Account
+WHERE Id NOT IN (SELECT AccountId FROM Opportunity)

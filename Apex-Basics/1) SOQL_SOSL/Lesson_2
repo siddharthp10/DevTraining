@@ -1,0 +1,13 @@
+// 2.0 SOQL (Relationship Query- Child to Parent [Standard Object])
+SELECT Id, Name, Amount, AccountId,
+		Account.Name, Account.Industry,
+		Account.AnnualRevenue
+FROM Opportunity
+
+
+// 2.1 SOQL (Relationship Query- Child to Parent [Custom Object])
+SELECT Id, Name, My_Teacher__c,
+		My_Teacher__r.Name,
+		My_Teacher__r.Account__r.Name
+		My_Teacher__r.Age__c
+FROM Student__c

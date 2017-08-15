@@ -1,0 +1,16 @@
+/** 1.0 while loop **/
+Integer i = 0;
+while (i < 10) {
+    // Your code goes here
+    i++; // i = i+1;
+}
+// Your code goes here
+
+
+/** 1.1 do - while loop **/
+Integer i = 0;
+do {
+    // Your code goes here
+    i++;
+} while (i < 10);
+// Your code goes here

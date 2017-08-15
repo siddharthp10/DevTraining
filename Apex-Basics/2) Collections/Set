@@ -1,0 +1,16 @@
+/** @@Set:
+ *  1) Does not maintain indexes
+ *  2) Returns unordered / unsorted values
+ *  3) Can not contain duplicate values
+ * 
+ *  Run below snippet in developer console to see the output
+ **/
+
+Set<String> strSet = new Set<String> ();
+strSet.add ('Test - 3');
+strSet.add ('Test - 1');
+strSet.add ('Test - 2');
+strSet.add ('Test - 1');
+
+System.debug ('Set size @@@@ ' + strSet.size ());
+// your code goes here...

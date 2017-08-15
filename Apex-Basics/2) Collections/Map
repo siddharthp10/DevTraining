@@ -1,0 +1,17 @@
+/** @@Map:
+ *  1) It's a key-value pair
+ *  2) Each value will be stored with a unique key
+ *  3) You pass the key and map returns the value stored with it
+ * 
+ *  Run below snippet in developer console to see the output
+ **/
+
+Map<Integer, String> intStrMap = new Map<Integer, String> ();
+intStrMap.put (1, 'Test - 1');
+intStrMap.put (6, 'Test - 2');
+intStrMap.put (3, 'Test - 3');
+intStrMap.put (9, 'Test - 1');
+intStrMap.put (6, 'Test - 6');
+
+System.debug ('Map size @@@ ' + intStrMap.size ());
+// Your code goes here

@@ -1,0 +1,21 @@
+/**
+ * These are few SOSL and SOQL examples for learning. However, this would not include 
+ * very complex or dynamic query structure, as they are only required for adavanced developer
+ * course. For more information you can also check 
+ * https://resources.docs.salesforce.com/sfdc/pdf/salesforce_soql_sosl.pdf
+ **/
+
+// 1.0 SOSL (Salesforce Object Query Language)
+FIND {sforce} IN ALL FIELDS
+Returning Account (Id, Name, AnnualRevenue),
+		Opportunity (Id, Name, Amount),
+		Teacher__c (Id, Name, Age__c)
+
+
+
+// 1.1 SOQL (Salesforce Object Query Language)
+SELECT Id, Name, AnnualRevenue
+FROM Account
+WHERE AnnualRevenue > 0
+ORDER BY AnnualRevenue DESC
+LIMIT 5
