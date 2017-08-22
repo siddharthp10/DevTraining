@@ -1,0 +1,23 @@
+/**
+ * Description: This trigger will stop lead creations with duplicate email.
+ * Trigger events should be before insert or before update
+ *
+ * Created By: [Your name]
+ * Created Date: [Today's Date]
+ **/
+trigger DedupLeadsByEmail_Insert on Lead (before insert) {
+ 	Set<String> leadEmailSet = new Set<String> ();
+ 	for (Lead aLead : Trigger.new) {
+ 		if (aLead.Email != null)
+ 			leadEmailSet.add (aLead.Email);
+ 	} // End for
+
+ 	Set<String> leadExistEmailSet = new Set<String> ();
+ 	for (Lead leadExist : [SELECT Id, Email
+ 							FROM Lead
+ 							WHERE Email IN :leadEmailSet]) {
+ 		leadExistEmailSet.add (leadExist.Id); // lead exist with the same email
+ 	}
+ 	// Your code goes here
+ 	// use .addError () method to add error message
+}
