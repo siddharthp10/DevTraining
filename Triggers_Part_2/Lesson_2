@@ -1,0 +1,18 @@
+/**
+ * Description: This is a handler class which will be invoked from a lead
+ * trigger to update TrackingNumber__c
+ *
+ * Created By: [Your Name]
+ * Created Date: [Today's Date]
+ **/
+public class UpdateTrackNumHandler {
+
+	// A method to update TrackingNumber__c
+	public static void updateTrackingNum (List<Opportunity> opptyList) {
+		Integer extOpptyCount = [SELECT Count() FROM Opportunity];
+		for (Opportunity oppty : opptyList) {
+			extOpptyCount ++; // increase the count by 1
+			oppty.TrackingNumber = 'TN-000'+extOpptyCount;
+		}
+	} // End method
+}

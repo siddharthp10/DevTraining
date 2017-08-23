@@ -1,0 +1,27 @@
+/**
+ * Description: This is a handler class which will be invoked from account
+ * trigger to create default opportunity
+ *
+ * Created By: [Your Name]
+ * Created Date: [Today's Date]
+ **/
+public class InsertDefaultOpptyHandler {
+
+	// A method to insert default oppty
+	public static void insertDefaultOppty (List<Account> accList) {
+		List<Opportunity> listOpptyToInsert = new List<Opportunity> ();
+		for (Account acc : accList) {
+	    	System.debug ('acc **** - '+ acc);
+		    if (acc.AnnualRevenue >= 500000) {
+		        Opportunity oppty = new Opportunity ();
+		        oppty.Name = acc.Name + ' - Default Oppty';
+		        oppty.StageName = 'Qualification';
+		        oppty.CloseDate = Date.today () + 30;
+		        oppty.AccountId = acc.Id;
+		        listOpptyToInsert.add (oppty);
+		    } // End if
+		} // End for
+		if (listOpptyToInsert.size ()> 0)
+			insert listOpptyToInsert;
+	} // End method
+}

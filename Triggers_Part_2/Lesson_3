@@ -1,0 +1,51 @@
+/**
+ * Description: This is a handler class which will be invoked from a lead
+ * trigger and it will deduplicate leads based on the email
+ *
+ * Created By: [Your Name]
+ * Created Date: [Today's Date]
+ **/
+public class DedupLeadsByEmailHandler {
+
+	// A method to dedup leads on insert
+	public static void dedupLeadsOnInsert (List<Lead> leadList) {
+		Set<String> leadEmailSet = new Set<String> ();
+		for (Lead aLead : leadList) {
+			if (aLead.Email != null)
+				leadEmailSet.add (aLead.Email);
+		} // End for
+
+		Set<String> leadExistEmailSet = new Set<String> ();
+		for (Lead leadExist : [SELECT Id, Email
+								FROM Lead
+								WHERE Email IN :leadEmailSet]) {
+			leadExistEmailSet.add (leadExist.Email); // duplicate email
+		}
+		for (Lead leadNew : leadList) {
+			if (leadExistEmailSet.contains (leadNew.Email))
+				leadNew.Email.addError ('Duplicate lead!');
+		}
+	} // End method
+
+	// A method to dedup leads on update
+	public static void dedupLeadsOnInsert (List<Lead> leadList) {
+		Set<String> leadEmailSet = new Set<String> ();
+		for (Lead aLead : leadList) {
+			if (aLead.Email != null)
+				leadEmailSet.add (aLead.Email);
+		} // End for
+
+		Map<String, Id> leadEmailIdExistMap = new Map<String, Id> ();
+		for (Lead leadExist : [SELECT Id, Email
+								FROM Lead
+								WHERE Email IN :leadEmailSet]) {
+			// duplicate email
+			leadEmailIdExistMap.put (leadExist.Email, leadExist.Id);
+		}
+		for (Lead leadNew : leadList) {
+			if (leadEmailIdExistMap.contains (leadNew.Email) &&
+				leadEmailIdExistMap.get (leadNew.Email) != leadNew.Id)
+				leadNew.Email.addError ('Duplicate lead!');
+		}
+	} // End method
+}
