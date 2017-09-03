@@ -1,12 +1,18 @@
 // 3.0 SOQL (Relationship Query- Parent to Child [Standard Object])
+
 SELECT Id, Name,
-	(SELECT Id, Name, Amount,
-		(SELECT Id FROM OpportunityLineItems)
+	(SELECT Id, Name, Amount
 	   FROM Opportunities),
 FROM Account
-
 
 // 3.1 SOQL (Relationship Query- Parent to Child [Custom Object])
 SELECT Id, Name, Age__c
 	(SELECT Id, Name FROM Students__r)
 FROM Teacher__c
+
+// Incorrect query (syntax)
+SELECT Id, Name,
+	(SELECT Id, Name, Amount,
+		(SELECT Id FROM OpportunityLineItems)
+	   FROM Opportunities),
+FROM Account
