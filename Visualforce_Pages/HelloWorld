@@ -1,0 +1,13 @@
+<apex:page standardController="Account">
+    <apex:form >
+        <apex:pageBlock title="Hi {!$User.FirstName}" tabStyle="Opportunity">
+            <apex:pageBlockSection title="Quick Update">
+                <!-- Add accounts fields -->
+                <apex:commandButton value="Update"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock >
+            <!-- your code goes here -->
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

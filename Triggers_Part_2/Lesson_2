@@ -5,14 +5,14 @@
  * Created By: [Your Name]
  * Created Date: [Today's Date]
  **/
-public class UpdateTrackNumHandler {
+public class OpportunityTrggerHanlder {
 
 	// A method to update TrackingNumber__c
 	public static void updateTrackingNum (List<Opportunity> opptyList) {
 		Integer extOpptyCount = [SELECT Count() FROM Opportunity];
 		for (Opportunity oppty : opptyList) {
 			extOpptyCount ++; // increase the count by 1
-			oppty.TrackingNumber = 'TN-000'+extOpptyCount;
+			oppty.TrackingNumber__c = 'TN-000'+extOpptyCount;
 		}
 	} // End method
 }

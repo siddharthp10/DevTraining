@@ -5,7 +5,7 @@
  * Created By: [Your Name]
  * Created Date: [Today's Date]
  **/
-public class DedupLeadsByEmailHandler {
+public class LeadTriggerHandler {
 
 	// A method to dedup leads on insert
 	public static void dedupLeadsOnInsert (List<Lead> leadList) {

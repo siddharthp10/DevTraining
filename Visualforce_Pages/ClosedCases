@@ -1,0 +1,36 @@
+<apex:page controller="ClosedCasesController">
+    <apex:stylesheet value="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+    <apex:form >
+        <apex:pageBlock >
+            <table id="theTable">
+                <thead>
+                    <tr>
+                        <th>Case Number</th>
+                        <th>Company</th>
+                        <th>Status</th>
+                        <th>Priority</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <apex:repeat value="{!CaseList}" var="cs">
+                        <tr>
+                            <td>{!cs.CaseNumber}</td>
+                            <td>{!cs.Account.Name}</td>
+                            <td>{!cs.Status}</td>
+                            <td>{!cs.Priority}</td>
+                        </tr>
+                    </apex:repeat>
+                </tbody>
+            </table>
+        </apex:pageBlock>
+    </apex:form>
+    <apex:includeScript value="https://code.jquery.com/jquery-3.3.1.js"/>
+    <apex:includeScript value="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"/>
+    <script>
+        $(document).ready(function() {
+            $('#theTable').DataTable( {
+
+            } );
+        } );
+    </script>
+</apex:page>

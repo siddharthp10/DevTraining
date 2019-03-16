@@ -1,20 +1,23 @@
 /**
- * Description: This trigger will create a default opportunity whenever an account is created
+ * Description: This trigger will create a primary contact whenever an account is created
  * with AnnaulRevenue greater than 500000.
  *
- * Created By: Siddharth Pandit
+ * Created By: [Your name]
  * Created Date: [Today's Date]
  **/
 trigger InsertDefaultOppty on Account (after insert) {
-	for (Account acc : Trigger.new) {
-	    System.debug ('acc **** - '+ acc);
-	    if (acc.AnnualRevenue >= 500000) {
-	        Opportunity oppty = new Opportunity ();
-	        oppty.Name = acc.Name + ' - Default Oppty';
-	        oppty.StageName = 'Qualification';
-	        // Your code goes here
-	        // You need to make sure to set close date as it's a required field
-	        // You need to set the relationship with account before insertation
-	    } // End if
-	} // End for
+    List<Contact> conListToInsert = new List<Contact> ();
+    for (Account acc : Trigger.new) {
+        System.debug ('acc ----- '+ acc);
+        if (acc.AnnualRevenue >= 500000) {
+            Contact con = new Contact ();
+            con.FirstName = 'Primary';
+            con.LastName = 'Contact';
+            // Your code goes here
+            // You need to set the relationship with account before insertation
+        } // End if
+    } // End for
+    if (conListToInsert.size () > 0) {
+        insert conListToInsert;
+    }
 } // End trigger 

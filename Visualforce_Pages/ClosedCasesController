@@ -1,0 +1,16 @@
+/**
+ * Description: This VF controller will fetch closed cases
+ *
+ * Created By: [Your name]
+ * Created date: [Today's date]
+ **/
+public with sharing class ClosedCasesController2 {
+    
+    // A method to fetch closed cases
+    public List<Case> getClosedCases () {
+        return [SELECT CaseNumber, Priority, Status, Account.Name,
+                    Contact.Name, Reason
+                FROM Case
+                WHERE Status = 'Closed'];
+    }
+}

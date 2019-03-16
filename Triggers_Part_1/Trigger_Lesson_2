@@ -2,7 +2,7 @@
  * Description: This trigger will generate a unique value for
  * TrackingNumber__c field.
  *
- * Created By: Siddharth Pandit
+ * Created By: [Your name]
  * Created Date: [Today's Date]
  **/
 trigger UpdateTrackNum on Opportunity (before insert) {

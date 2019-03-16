@@ -6,22 +6,22 @@
  * Created Date: [Today's Date]
  **/
 trigger DedupLeadsByEmail_Update on Lead (before insert) {
- 	Set<String> leadEmailSet = new Set<String> ();
- 	for (Lead aLead : Trigger.new) {
- 		if (aLead.Email != null)
- 			leadEmailSet.add (aLead.Email);
- 	} // End for
+    Set<String> leadEmailSet = new Set<String> ();
+    for (Lead aLead : Trigger.new) {
+        if (aLead.Email != null)
+            leadEmailSet.add (aLead.Email);
+    } // End for
 
- 	// Your code goes here
- 	// hint- prepare a map (Name: leadEmailIdExistMap) for existing
- 	// leads that have same email address
- 	// Email should be the key and Lead Id should be the value of Map
+    // Your code goes here
+    // hint- prepare a map (Name: leadEmailIdExistMap) for existing
+    // leads that have same email address
+    // Email should be the key and Lead Id should be the value of Map
 
- 	for (Lead newLead : Trigger.new) {
- 		if (leadEmailIdExistMap.containsKey (newLead.Email) &&
- 			leadEmailIdExistMap.get (newLead.Email) != 
- 			newLead.Id) {
- 			newLead.Email.addError ('Duplicate lead!');
- 		}
- 	}
+    for (Lead newLead : Trigger.new) {
+        if (leadEmailIdExistMap.containsKey (newLead.Email) &&
+            leadEmailIdExistMap.get (newLead.Email) != 
+            newLead.Id) {
+            newLead.Email.addError ('Duplicate lead!');
+        }
+    }
 }

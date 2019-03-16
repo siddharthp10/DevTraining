@@ -1,4 +1,4 @@
-@ RestResource (urlMapping='/createData/v1*')
+@ RestResource (urlMapping='/createData/v1')
 global with sharing class RESTWebservice {
 
     // Post method
@@ -17,7 +17,7 @@ global with sharing class RESTWebservice {
         List<Opportunity> opptyListToInsert = new List<Opportunity> ();
         for (JSONParser.Acct aAcc : pAccList) {
             Account acc = new Account ();
-            [----- your code goes here !!]
+            //[----- your code goes here !!]
 
             // Using to define relationship on Opportunity
             Account referenceAcc = new Account (
@@ -26,7 +26,7 @@ global with sharing class RESTWebservice {
             // Child data
             for (JSONParser.Oppty oppty : aAcc.opportunities) {
                 Opportunity opp = new Opportunity ();
-                [------ Your code goes here !!]
+                //[------ Your code goes here !!]
 
                 opp.Account = referenceAcc;
                 opptyListToInsert.add (opp);
