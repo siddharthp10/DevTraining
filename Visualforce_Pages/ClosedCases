@@ -12,7 +12,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <apex:repeat value="{!CaseList}" var="cs">
+                    <apex:repeat value="{!ClosedCases}" var="cs">
                         <tr>
                             <td>{!cs.CaseNumber}</td>
                             <td>{!cs.Account.Name}</td>

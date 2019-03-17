@@ -4,7 +4,7 @@
  * Created By: [Your name]
  * Created date: [Today's date]
  **/
-public with sharing class ClosedCasesController2 {
+public with sharing class ClosedCasesController {
     
     // A method to fetch closed cases
     public List<Case> getClosedCases () {
